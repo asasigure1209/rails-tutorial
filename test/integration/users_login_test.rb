@@ -76,8 +76,7 @@ class LogoutTest < Logout
     assert_select "a[href=?]", user_path(@user), count: 0
   end
 
-  test "login with valida information followed by logout" do
-    # 2番目のウィンドウでログアウトをクリックするユーザーをシミュレートする
+  test "should still work after logout in second window" do
     delete logout_path
     assert_redirected_to root_url
   end
