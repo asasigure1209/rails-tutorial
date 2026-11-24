@@ -28,7 +28,7 @@ class PasswordResetsController < ApplicationController
       render 'edit', status: :unprocessable_entity
     elsif @user.update(user_params)
       @user.forget
-      reset_session
+      @user.update_attribute(:reset_digest, nil)
       log_in @user
       flash[:success] = "Password has been reset."
       redirect_to @user
